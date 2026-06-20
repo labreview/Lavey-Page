@@ -1,0 +1,167 @@
+/* ===================================================
+   DEMOCRACY — PAGE-SPECIFIC STYLES (extends project.css)
+   =================================================== */
+
+/* ===== Color overrides — civic forest green ===== */
+:root {
+  --gold:          #1B4D3E;   /* Deep forest green — primary accent */
+  --green-bright:  #52B788;   /* Medium green — dark-bg numbers */
+  --green-tint:    #F0F7F4;   /* Light green tint */
+  --bg:            #F0F7F4;   /* Alt section bg */
+}
+
+.proj-cover,
+.proj-stats,
+.bg-dark,
+.proj-closing {
+  background: #1C290D !important;
+}
+
+.proj-stats .stat-num {
+  color: var(--green-bright);
+}
+
+/* ----- Four Stages Grid ----- */
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.stage-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-top: 3px solid var(--green-bright);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background 0.25s;
+}
+.stage-card:hover { background: rgba(255,255,255,0.08); }
+.stage-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--green-bright);
+  line-height: 1;
+}
+.stage-card h3 {
+  font-size: 1rem;
+  color: white;
+}
+.stage-card p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ----- Key Locations Grid ----- */
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.location-item {
+  background: var(--green-tint);
+  border: 1px solid rgba(27,77,62,0.15);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ----- Campaign Resources Grid ----- */
+.campaign-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.campaign-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  text-align: center;
+}
+.campaign-icon { font-size: 1.5rem; }
+
+/* ----- Accessibility Features Grid ----- */
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.access-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.access-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+}
+.access-icon { font-size: 1.5rem; }
+.access-item h3 { font-size: 0.95rem; }
+.access-item p  { font-size: 0.82rem; color: var(--text-sub); line-height: 1.65; margin: 0; }
+
+/* ----- Partner logo ----- */
+.partner-logo {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+.partner-logo img {
+  max-width: 520px;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* ----- Gameplay video ----- */
+.proj-video-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.proj-video-wrap video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.12);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .stages-grid   { grid-template-columns: repeat(2, 1fr); }
+  .access-grid   { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .campaign-grid { grid-template-columns: repeat(2, 1fr); }
+  .locations-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .stages-grid   { grid-template-columns: 1fr; }
+  .access-grid   { grid-template-columns: 1fr; }
+  .campaign-grid { grid-template-columns: repeat(2, 1fr); }
+  .locations-grid{ grid-template-columns: 1fr; }
+}

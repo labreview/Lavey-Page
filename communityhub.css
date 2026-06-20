@@ -1,0 +1,273 @@
+/* ===================================================
+   COMMUNITY CORNER — PAGE-SPECIFIC STYLES (extends project.css)
+   =================================================== */
+
+/* ===== Teal color overrides ===== */
+:root {
+  --gold:        #2D5A4E;   /* Deep forest teal — primary accent */
+  --gold-bright: #52A688;   /* Medium teal — dark-bg accent */
+}
+
+.proj-stats .stat-num {
+  color: var(--gold-bright);
+}
+
+/* ----- Makerspace photo ----- */
+.ch-space-img img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  display: block;
+}
+
+/* ----- Research method cards (dark section) ----- */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.method-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: background 0.25s;
+}
+.method-card:hover { background: rgba(255,255,255,0.08); }
+.method-icon { font-size: 1.5rem; }
+.method-card h3 { font-size: 1rem; color: white; }
+.method-card p  { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 0; }
+
+/* ----- Friction list ----- */
+.friction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.friction-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.925rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.friction-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ----- Key Insights grid ----- */
+.ch-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.ch-insight-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.ch-insight-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1;
+}
+.ch-insight-card h3 { font-size: 0.95rem; }
+.ch-insight-card > p { font-size: 0.87rem; color: var(--text-sub); line-height: 1.65; margin: 0; }
+.ch-quote {
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--text-sub);
+  border-left: 2px solid var(--gold);
+  padding-left: 1rem;
+  margin: 0.25rem 0;
+  line-height: 1.6;
+}
+.ch-insight-key {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ----- Opportunity reframe ----- */
+.ch-opportunity {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.ch-opp-before,
+.ch-opp-after {
+  flex: 1;
+  min-width: 200px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.ch-opp-after {
+  border-color: var(--gold);
+  border-width: 2px;
+}
+.ch-opp-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+.ch-opp-tag--before { background: rgba(0,0,0,0.06); color: var(--text-sub); }
+.ch-opp-tag--after  { background: var(--gold); color: white; }
+.ch-opp-before p,
+.ch-opp-after p {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.65;
+  margin: 0;
+}
+.ch-opp-arrow {
+  font-size: 1.5rem;
+  color: var(--gold);
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+/* ----- Solution features grid ----- */
+.ch-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.ch-feature {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.ch-feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+}
+.ch-feature-icon { font-size: 1.5rem; }
+.ch-feature h3 { font-size: 0.95rem; }
+.ch-feature p  { font-size: 0.82rem; color: var(--text-sub); line-height: 1.65; margin: 0; }
+
+/* ----- Floor plan grid (dark) ----- */
+.ch-floorplan-grid {
+  max-width: 1100px;
+  margin: 2.5rem auto 0;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.ch-floorplan-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  display: block;
+}
+
+/* ----- Impact list (dark) ----- */
+.ch-impact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.ch-impact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 3px solid var(--gold-bright);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.ch-check {
+  font-size: 1.2rem;
+  color: var(--gold-bright);
+  font-weight: 700;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.ch-impact-item h3 { font-size: 1rem; color: white; margin-bottom: 0.3rem; }
+.ch-impact-item p  { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 0; }
+
+/* ----- Learnings grid ----- */
+.ch-learn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.ch-learn-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+}
+.ch-learn-card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.ch-learn-card p  { font-size: 0.85rem; color: var(--text-sub); line-height: 1.7; margin: 0; }
+
+/* ----- Wide image (used throughout) ----- */
+.proj-img-wide {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.proj-img-wide img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.12);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .ch-features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .method-grid       { grid-template-columns: 1fr; }
+  .ch-insights-grid  { grid-template-columns: 1fr; }
+  .ch-opportunity    { flex-direction: column; gap: 1rem; }
+  .ch-opp-arrow      { transform: rotate(90deg); align-self: center; }
+  .ch-floorplan-grid { grid-template-columns: 1fr; }
+  .ch-learn-grid     { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .ch-features-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,426 @@
+/* ===================================================
+   UNITRADE — PAGE-SPECIFIC STYLES (extends project.css)
+   =================================================== */
+
+/* ===== UniTrade color palette ===== */
+:root {
+  --gold:         #002A5C;              /* Navy blue — primary accent on light bg */
+  --blue-bright:  #5B88B2;             /* Mid blue — accent on dark bg + hover states */
+  --blue-tint:    #F5EFEB;             /* Warm cream — card & tinted backgrounds */
+  --blue-border:  rgba(91,136,178,0.2);/* Subtle blue border */
+  --bg:           #F5EFEB;             /* Alt section cream background */
+}
+
+/* Pure black for all dark sections */
+.proj-cover,
+.proj-stats,
+.bg-dark,
+.proj-closing {
+  background: #1C290D !important;
+}
+
+/* Mid blue for stat/insight numbers on black backgrounds */
+.proj-stats .stat-num,
+.insights-row .insight-num {
+  color: var(--blue-bright);
+}
+
+/* Cream + navy for work model label badge */
+.model-label {
+  background: var(--blue-tint) !important;
+  border-color: rgba(0, 42, 92, 0.15) !important;
+  color: var(--gold) !important;
+}
+
+/* Feature item hover — blue accent */
+.feature-item:hover {
+  border-color: var(--blue-bright) !important;
+  box-shadow: 0 4px 16px rgba(91,136,178,0.18) !important;
+}
+
+/* ----- Research Questions ----- */
+.rq-block {
+  margin-top: 2.5rem;
+  border-left: 3px solid var(--gold);
+  padding-left: 1.75rem;
+}
+.rq-heading {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  margin-bottom: 1rem !important;
+}
+.rq-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  counter-reset: rq;
+}
+.rq-list li {
+  counter-increment: rq;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.rq-list li::before {
+  content: counter(rq);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  width: 1.25rem;
+  margin-top: 1px;
+}
+
+/* ----- Contextual Inquiry Findings ----- */
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+.finding-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: background 0.25s;
+}
+.finding-card:hover { background: rgba(255,255,255,0.08); }
+.finding-icon { font-size: 1.5rem; }
+.finding-card h3 {
+  font-size: 1rem;
+  color: white;
+}
+.finding-card p {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ----- Thematic Analysis ----- */
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.theme-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.theme-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+}
+.theme-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-style: italic;
+  line-height: 1;
+}
+.theme-card h3 { font-size: 0.95rem; }
+.theme-card p  { font-size: 0.8rem; color: var(--text-sub); line-height: 1.65; margin: 0; }
+
+/* ----- Work Models ----- */
+.models-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.model-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.model-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,169,110,0.35);
+  background: #FFF8EE;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  width: fit-content;
+}
+.model-card h3 { font-size: 1.05rem; }
+.model-card p  { font-size: 0.875rem; color: var(--text-sub); line-height: 1.75; margin: 0; }
+
+/* ----- Participatory Design Scenarios ----- */
+.scenarios-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.scenario-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 2.25rem;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.scenario-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+}
+.scenario-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  width: fit-content;
+}
+.scenario-card h3 { font-size: 1.1rem; }
+.scenario-card p  { font-size: 0.875rem; color: var(--text-sub); line-height: 1.75; margin: 0; }
+
+/* ----- Numbered Research Insights ----- */
+.insights-numbered {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+.insight-numbered-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.insight-numbered-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+}
+.insight-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  font-style: italic;
+  flex-shrink: 0;
+  opacity: 0.8;
+  width: 2.5rem;
+}
+.insight-numbered-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+.insight-numbered-card p  { font-size: 0.875rem; color: var(--text-sub); line-height: 1.75; margin: 0; }
+
+/* ----- Design Challenges ----- */
+.challenge-blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.challenge-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.challenge-block h3 { font-size: 1.05rem; }
+.challenge-block p  { font-size: 0.875rem; color: var(--text-sub); line-height: 1.75; margin: 0; }
+
+/* ----- Design Guidelines ----- */
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.guideline-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.guideline-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+}
+.guideline-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-style: italic;
+  line-height: 1;
+}
+.guideline-card h3 { font-size: 0.95rem; }
+.guideline-card p  { font-size: 0.8rem; color: var(--text-sub); line-height: 1.65; margin: 0; }
+
+/* ----- Final Solution Features ----- */
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.feature-item:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 16px rgba(201,169,110,0.12);
+}
+.feature-item span {
+  color: var(--gold);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* ----- 5-column pillars override ----- */
+.pillars-grid--5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* ----- Closing tagline ----- */
+.closing-tagline {
+  margin-top: 2.5rem !important;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: rgba(255,255,255,0.5) !important;
+  letter-spacing: 0.02em;
+}
+
+/* ----- Side-by-side image pair (Work Models) ----- */
+.proj-img-pair {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.proj-img-pair img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+}
+
+/* ----- Phone screen grid (MVP showcase) ----- */
+.phone-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.phone-grid--5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+.phone-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.phone-grid-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+}
+.phone-white-bg {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+.phone-white-bg img {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+.phone-grid-item span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .themes-grid     { grid-template-columns: repeat(3, 1fr); }
+  .guidelines-grid { grid-template-columns: repeat(3, 1fr); }
+  .pillars-grid--5 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1100px) {
+  .phone-grid--5   { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 960px) {
+  .proj-img-pair   { grid-template-columns: 1fr; }
+  .phone-grid      { grid-template-columns: repeat(2, 1fr); }
+  .phone-grid--5   { grid-template-columns: repeat(2, 1fr); }
+  .findings-grid   { grid-template-columns: 1fr; }
+  .themes-grid     { grid-template-columns: repeat(2, 1fr); }
+  .guidelines-grid { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid--5 { grid-template-columns: repeat(2, 1fr); }
+  .models-grid     { grid-template-columns: 1fr; }
+  .scenarios-grid  { grid-template-columns: 1fr; }
+  .challenge-blocks{ grid-template-columns: 1fr; }
+  .features-list   { grid-template-columns: 1fr; }
+  .insight-numbered-card { flex-direction: column; gap: 1rem; }
+  .insight-n { font-size: 2rem; }
+}
+
+@media (max-width: 640px) {
+  .themes-grid     { grid-template-columns: 1fr; }
+  .guidelines-grid { grid-template-columns: 1fr; }
+  .pillars-grid--5 { grid-template-columns: 1fr; }
+  .phone-grid--5   { grid-template-columns: repeat(2, 1fr); }
+}

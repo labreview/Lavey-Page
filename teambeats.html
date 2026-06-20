@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teambeats Studio — Lavey Lai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="project.css" />
+  <style>
+    /* ── Story Scroll ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .flow-art {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .flow-section {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .flow-inner {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 2rem;
+      padding: clamp(5rem, 8vw, 6rem) 4vw 8vw;
+      transform-origin: bottom left;
+      will-change: transform;
+    }
+
+    .flow-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .flow-rule {
+      border: none;
+      border-top: 1px solid currentColor;
+      opacity: 0.2;
+      flex-shrink: 0;
+    }
+
+    .flow-heading {
+      font-size: clamp(3.5rem, 12vw, 11rem);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .flow-body {
+      max-width: 52ch;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 400;
+      line-height: 1.65;
+      opacity: 0.75;
+    }
+
+    .flow-cols {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3vw;
+    }
+    .flow-col {
+      flex: 1;
+      min-width: 180px;
+    }
+    .flow-col-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .flow-col-body {
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
+      line-height: 1.65;
+      opacity: 0.6;
+    }
+
+    /* Image grids inside sections */
+    .flow-img-strip {
+      display: grid;
+      gap: 4px;
+      margin-top: 2rem;
+    }
+    .flow-img-strip + .flow-img-strip {
+      margin-top: 4px;
+    }
+    .flow-img-strip.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .flow-img-strip.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .flow-img-strip.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .flow-img-strip img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Sapporo editorial grid */
+    .sap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin-top: 2rem;
+    }
+    .sap-grid img,
+    .sap-grid video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .sap-w2 { grid-column: span 2; }
+    .sap-w3 { grid-column: span 3; }
+
+
+    /* Skills */
+    .flow-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+    .flow-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      opacity: 0.55;
+    }
+
+    /* Nav adjustments */
+    .proj-nav { position: fixed; z-index: 1000; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="proj-nav" id="projNav">
+    <div class="proj-nav-inner">
+      <a href="index.html" class="proj-nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        All Projects
+      </a>
+      <a href="index.html" class="proj-nav-logo">LL</a>
+    </div>
+  </nav>
+
+  <!-- ══ FLOW ART ══ -->
+  <div class="flow-art" id="flowArt">
+
+    <!-- 01 — Intro -->
+    <div class="flow-section" data-flow-section style="background:#111111; color:#f0ede6;">
+      <div class="flow-inner">
+        <p class="flow-label">01 — Teambeats Studio</p>
+        <hr class="flow-rule" />
+        <div>
+          <h1 class="flow-heading">Team<br>beats<br>Studio</h1>
+        </div>
+        <hr class="flow-rule" />
+        <p class="flow-body">Graphic Designer &amp; Marketing Content Creator. Freelance / Contract — Las Vegas, NV.</p>
+        <hr class="flow-rule" />
+        <div class="flow-cols">
+          <div class="flow-col">
+            <p class="flow-col-title">What I did</p>
+            <p class="flow-col-body">Designed branded visual assets, promotional materials, and social media content for restaurants, nightlife venues, and hospitality businesses across digital and print channels.</p>
+          </div>
+          <div class="flow-col">
+            <p class="flow-col-title">Clients</p>
+            <p class="flow-col-body">Sapporo Sushi, Industry 13, Master Kim's</p>
+          </div>
+          <div class="flow-col">
+            <p class="flow-col-title">Channels</p>
+            <p class="flow-col-body">Social media campaigns, event advertisements, promotional videos, print collateral, brand assets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 — Sapporo Sushi -->
+    <div class="flow-section" data-flow-section style="background:#1a1714; color:#f0ede6;">
+      <div class="flow-inner">
+        <p class="flow-label">02 — Sapporo Sushi</p>
+        <hr class="flow-rule" />
+        <div>
+          <h2 class="flow-heading" style="color:#c9a96e;">Sapporo<br>Sushi</h2>
+        </div>
+        <hr class="flow-rule" />
+        <div class="sap-grid">
+          <!-- Video (3 wide) + 1 post -->
+          <video class="sap-w3"
+            src="brand_assets/Teambeats%20Studio/Sapporo_Revolving%20_Sushi_Customer's_Video_VImeo720p30.mp4"
+            autoplay muted loop playsinline></video>
+          <img src="brand_assets/Teambeats%20Studio/Saporo%20Sushi%20ig%20post.png"
+               alt="Sapporo IG" />
+          <!-- IG posts -->
+          <img src="brand_assets/Teambeats%20Studio/Saporo%20Sushi%20ig%20post%202.png" alt="Sapporo IG" />
+          <img src="brand_assets/Teambeats%20Studio/Saporo%20Sushi%20ig%20post%203.png" alt="Sapporo IG" />
+          <img src="brand_assets/Teambeats%20Studio/Saporo%20Sushi%20ig%20post%204.png" alt="Sapporo IG" />
+          <img src="brand_assets/Teambeats%20Studio/Saporo%20Sushi%20ig%20post%205.png" alt="Sapporo IG" />
+          <img src="brand_assets/Teambeats%20Studio/Saporo%20Sushi%20ig%20post%206.png" alt="Sapporo IG" />
+          <img src="brand_assets/Teambeats%20Studio/Saporo%20Sushi%20ig%20post%207.png" alt="Sapporo IG" />
+          <img src="brand_assets/Teambeats%20Studio/Saporo%20Sushi%20ig%20post%208.png" alt="Sapporo IG" />
+          <!-- Brand pieces last -->
+          <img src="brand_assets/Teambeats%20Studio/Sapporo.png"    alt="Sapporo Sushi" />
+          <img src="brand_assets/Teambeats%20Studio/sapporo2%201.png" alt="Sapporo Sushi" />
+        </div>
+        <hr class="flow-rule" />
+        <div class="flow-cols">
+          <div class="flow-col">
+            <p class="flow-col-title">Brand Experience</p>
+            <p class="flow-col-body">Clean, adaptable, humble, and professional — a warm, quality dining experience rooted in authentic Japanese revolving sushi culture translated into a consistent visual identity.</p>
+          </div>
+          <div class="flow-col">
+            <p class="flow-col-title">Ideal Customer</p>
+            <p class="flow-col-body">The curious, contemporary diner — modern enough to discover Sapporo through social media, traditional enough to appreciate the craft behind every plate.</p>
+          </div>
+          <div class="flow-col">
+            <p class="flow-col-title">Key Deliverables</p>
+            <p class="flow-col-body">Social media campaigns, seasonal event graphics, location-specific promotional assets, and a promotional video that drove in-store visits across four Las Vegas locations.</p>
+          </div>
+        </div>
+        <div class="flow-img-strip cols-2">
+          <img src="brand_assets/Teambeats%20Studio/saporo%20branding%201.png" alt="Sapporo branding" />
+          <img src="brand_assets/Teambeats%20Studio/saporo%20branding%202.png" alt="Sapporo branding 2" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 — Industry 13 -->
+    <div class="flow-section" data-flow-section style="background:#0a0a0a; color:#f0ede6;">
+      <div class="flow-inner">
+        <p class="flow-label" style="color:#7fff4f;">03 — Industry 13</p>
+        <hr class="flow-rule" />
+        <div>
+          <h2 class="flow-heading" style="color:#7fff4f;">Industry<br>13</h2>
+        </div>
+        <hr class="flow-rule" />
+        <div class="flow-img-strip cols-4">
+          <img src="brand_assets/Teambeats%20Studio/industry%2013.png"               alt="Industry 13" />
+          <img src="brand_assets/Teambeats%20Studio/industry%2013%20ig%20post.png"   alt="Industry 13 IG" />
+          <img src="brand_assets/Teambeats%20Studio/industry%2013%20ig%20post%202.png" alt="Industry 13 IG" />
+          <img src="brand_assets/Teambeats%20Studio/in%20132%201.png"                alt="Industry 13" />
+        </div>
+        <hr class="flow-rule" />
+        <div class="flow-cols">
+          <div class="flow-col">
+            <p class="flow-col-title" style="color:#7fff4f;">Professional</p>
+            <p class="flow-col-body">Fun, youthful, and accessible — a nightlife and hospitality venue that thrives on high energy and community. Content built around live events, curated lineups, and bold visual presence.</p>
+          </div>
+          <div class="flow-col">
+            <p class="flow-col-title" style="color:#7fff4f;">Campaigns</p>
+            <p class="flow-col-body">Developed event promotion graphics, social media assets, and branded marketing materials that captured the venue's high-energy identity and drove event attendance.</p>
+          </div>
+          <div class="flow-col">
+            <p class="flow-col-title" style="color:#7fff4f;">Ideal Customer</p>
+            <p class="flow-col-body">The social nightlife-goer — active on social media, energized by live events, and drawn to bold, visually distinct content that stands out in a busy feed.</p>
+          </div>
+        </div>
+        <div class="flow-img-strip cols-2">
+          <img src="brand_assets/Teambeats%20Studio/industry13%20branding%201.png" alt="Industry 13 branding" />
+          <img src="brand_assets/Teambeats%20Studio/industry13%20branding%202.png" alt="Industry 13 branding 2" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 — Master Kim's -->
+    <div class="flow-section" data-flow-section style="background:#0d0b18; color:#f0ede6;">
+      <div class="flow-inner">
+        <p class="flow-label" style="color:#d4a017;">04 — Master Kim's</p>
+        <hr class="flow-rule" />
+        <div>
+          <h2 class="flow-heading" style="color:#d4a017;">Master<br>Kim's</h2>
+        </div>
+        <hr class="flow-rule" />
+        <div class="flow-img-strip cols-4">
+          <img src="brand_assets/Teambeats%20Studio/master%20kim1%201.png"     alt="Master Kim's" />
+          <img src="brand_assets/Teambeats%20Studio/masterkim%20poster%202.png" alt="Master Kim's" />
+        </div>
+        <hr class="flow-rule" />
+        <div class="flow-cols">
+          <div class="flow-col">
+            <p class="flow-col-title" style="color:#d4a017;">Brand Experience</p>
+            <p class="flow-col-body">Premium and confident — Master Kim's Korean BBQ carries a bold sense of identity rooted in Korean culinary tradition, expressed through dramatic, high-contrast visual materials.</p>
+          </div>
+          <div class="flow-col">
+            <p class="flow-col-title" style="color:#d4a017;">Ideal Customer</p>
+            <p class="flow-col-body">Food-driven, experience-seeking diners who value authenticity and atmosphere. Content designed to evoke warmth, tradition, and the communal energy of Korean BBQ dining.</p>
+          </div>
+          <div class="flow-col">
+            <p class="flow-col-title" style="color:#d4a017;">Key Deliverables</p>
+            <p class="flow-col-body">Event posters, promotional print and digital advertisements, and branded campaign layouts aligned to a premium, bold visual identity.</p>
+          </div>
+        </div>
+        <div class="flow-img-strip cols-2">
+          <img src="brand_assets/Teambeats%20Studio/masterkim%20branding%201.png" alt="Master Kim's branding" />
+          <img src="brand_assets/Teambeats%20Studio/masterkim%20branding%202.png" alt="Master Kim's branding 2" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 — Skills -->
+    <div class="flow-section" data-flow-section style="background:#1C290D; color:#f0ede6;">
+      <div class="flow-inner">
+        <p class="flow-label">05 — Skills Applied</p>
+        <hr class="flow-rule" />
+        <div>
+          <h2 class="flow-heading">Visual<br>Story<br>telling</h2>
+        </div>
+        <hr class="flow-rule" />
+        <p class="flow-body">Applied branding principles, typography, visual hierarchy, and audience insights to create cohesive and effective marketing materials across multiple platforms.</p>
+        <hr class="flow-rule" />
+        <div class="flow-tags">
+          <span class="flow-tag">Graphic Design</span>
+          <span class="flow-tag">Branding</span>
+          <span class="flow-tag">Social Media Marketing</span>
+          <span class="flow-tag">Video Production</span>
+          <span class="flow-tag">Adobe Creative Suite</span>
+          <span class="flow-tag">Visual Storytelling</span>
+          <span class="flow-tag">Content Creation</span>
+          <span class="flow-tag">Print Design</span>
+          <span class="flow-tag">Marketing Design</span>
+          <span class="flow-tag">Typography</span>
+          <span class="flow-tag">Layout Design</span>
+        </div>
+        <hr class="flow-rule" />
+        <p class="flow-body" style="margin-top:auto;">
+          Collaborated with business owners and marketing teams to create engaging visual storytelling that increased audience engagement and brand visibility.
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /flow-art -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Lavey Lai</span>
+        <p class="footer-copy">© 2025 Lavey Lai. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/lavey-lai-769443206/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/lavey_lai/" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:lavey.weiyulai@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reducedMotion) {
+      const sections = document.querySelectorAll('[data-flow-section]');
+
+      sections.forEach((section, i) => {
+        gsap.set(section, { zIndex: i + 1 });
+
+        const inner = section.querySelector('.flow-inner');
+        if (!inner) return;
+
+        if (i > 0) {
+          gsap.set(inner, { rotation: 30, transformOrigin: 'bottom left' });
+          gsap.to(inner, {
+            rotation: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              end: 'top 25%',
+              scrub: true,
+            },
+          });
+        }
+
+        if (i < sections.length - 1) {
+          ScrollTrigger.create({
+            trigger: section,
+            start: 'bottom bottom',
+            end: 'bottom top',
+            pin: true,
+            pinSpacing: false,
+          });
+        }
+      });
+
+      ScrollTrigger.refresh();
+    }
+  </script>
+  <script src="project.js"></script>
+</body>
+</html>

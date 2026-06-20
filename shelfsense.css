@@ -1,0 +1,14 @@
+/* ===================================================
+   SHELFSENSE — COLOR OVERRIDES (extends project.css)
+   =================================================== */
+
+:root {
+  --gold:        #002A5C;  /* Navy blue primary accent */
+  --navy-bright: #5B88B2;  /* Lighter blue for dark-bg numbers */
+}
+
+/* Stat & insight numbers on dark background need lighter blue */
+.proj-stats .stat-num,
+.insights-row .insight-num {
+  color: var(--navy-bright);
+}

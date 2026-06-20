@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photography — Lavey Lai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #111111;
+      --surface:  #1a1a1a;
+      --text:     #f5f2ec;
+      --sub:      rgba(245,242,236,0.38);
+      --border:   rgba(245,242,236,0.08);
+      --accent:   #B3B49A;
+      --ease:     cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── NAV ── */
+    .ph-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      background: rgba(17,17,17,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .ph-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--sub);
+      letter-spacing: 0.02em;
+      transition: color 0.2s var(--ease);
+    }
+    .ph-nav-back:hover { color: var(--text); }
+    .ph-nav-back svg { flex-shrink: 0; }
+    .ph-nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--sub);
+    }
+
+    /* ── HEADER ── */
+    .ph-header {
+      padding: 96px 2rem 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .ph-title-block { line-height: 1; }
+
+    .ph-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 14vw, 13rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      line-height: 0.88;
+      /* Subtle grain on the letters */
+    }
+    .ph-title span {
+      display: block;
+    }
+
+    .ph-meta {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding-bottom: 0.5rem;
+    }
+    .ph-meta-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .ph-meta-count {
+      font-size: 0.78rem;
+      color: var(--sub);
+      letter-spacing: 0.05em;
+    }
+    .ph-meta-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--border);
+      margin-left: auto;
+    }
+
+    /* ── PHOTO WALL — CSS columns masonry ── */
+    .photo-wall {
+      columns: 3;
+      column-gap: 20px;
+      padding: 20px 20px 80px;
+    }
+
+    .pw-item {
+      break-inside: avoid;
+      margin-bottom: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      display: block;
+    }
+
+    .pw-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s var(--ease), filter 0.35s ease;
+      filter: brightness(0.92);
+    }
+
+    .pw-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background 0.3s ease;
+      pointer-events: none;
+    }
+
+    .pw-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(1.0);
+    }
+    .pw-item:hover::after {
+      background: rgba(0,0,0,0.08);
+    }
+
+    /* Stagger in with CSS animations */
+    .pw-item {
+      opacity: 0;
+      animation: itemIn 0.5s var(--ease) forwards;
+    }
+    @keyframes itemIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── LIGHTBOX ── */
+    .lb {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.97);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb.active { display: flex; }
+
+    #lb-img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 2px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    }
+
+    .lb-btn {
+      position: absolute;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      font-size: 2.6rem;
+      line-height: 1;
+      transition: color 0.2s ease;
+      padding: 0.5rem;
+    }
+    .lb-btn:hover { color: white; }
+    .lb-close { top: 1.25rem; right: 1.5rem; font-size: 2.2rem; }
+    .lb-prev  { left: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lb-next  { right: 1.25rem; top: 50%; transform: translateY(-50%); }
+
+    .lb-counter {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── FOOTER ── */
+    .ph-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ph-footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--sub);
+    }
+    .ph-footer-copy {
+      font-size: 0.72rem;
+      color: rgba(245,242,236,0.2);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .photo-wall { columns: 2; }
+      .ph-header { padding-top: 80px; align-items: flex-start; flex-direction: column; }
+      .ph-meta { text-align: left; }
+      .ph-meta-rule { margin-left: 0; }
+    }
+    @media (max-width: 520px) {
+      .photo-wall { columns: 1; }
+      .ph-title { font-size: clamp(4rem, 20vw, 6rem); }
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .pw-item { animation: none; opacity: 1; }
+      .pw-item img { transition: none; }
+    }
+
+    /* ── ZOOM PARALLAX ── */
+    .zp-container {
+      position: relative;
+      height: 300vh;
+    }
+    .zp-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .zp-layer {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      will-change: transform;
+    }
+    .zp-inner {
+      position: relative;
+      width: 25vw;
+      height: 25vh;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .zp-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Per-image offsets matching the React component */
+    .zp-layer:nth-child(2) .zp-inner { top: -30vh; left: 5vw;    width: 35vw; height: 30vh; }
+    .zp-layer:nth-child(3) .zp-inner { top: -10vh; left: -25vw;  width: 20vw; height: 45vh; }
+    .zp-layer:nth-child(4) .zp-inner {             left: 27.5vw;  width: 25vw; height: 25vh; }
+    .zp-layer:nth-child(5) .zp-inner { top: 27.5vh; left: 5vw;   width: 20vw; height: 25vh; }
+    .zp-layer:nth-child(6) .zp-inner { top: 27.5vh; left: -22.5vw; width: 30vw; height: 25vh; }
+    .zp-layer:nth-child(7) .zp-inner { top: 22.5vh; left: 25vw;  width: 15vw; height: 15vh; }
+
+    /* Scroll hint */
+    .zp-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.3);
+      z-index: 10;
+      pointer-events: none;
+      animation: hintBob 2s ease-in-out infinite;
+    }
+    @keyframes hintBob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="ph-nav">
+    <a href="index.html" class="ph-nav-back">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Lavey Lai
+    </a>
+    <span class="ph-nav-logo">LL</span>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="ph-header">
+    <div class="ph-title-block">
+      <h1 class="ph-title">
+        <span>LAVEY</span>
+        <span>LAI</span>
+      </h1>
+    </div>
+    <div class="ph-meta">
+      <span class="ph-meta-label">Photography</span>
+      <div class="ph-meta-rule"></div>
+      <span class="ph-meta-count">73 photographs</span>
+    </div>
+  </header>
+
+  <!-- ZOOM PARALLAX -->
+  <div class="zp-container" id="zp-container">
+    <div class="zp-sticky">
+      <div class="zp-layer"><div class="zp-inner"><img src="brand_assets/photograph/IMG_3737.jpg"  alt="Photography by Lavey Lai" /></div></div>
+      <div class="zp-layer"><div class="zp-inner"><img src="brand_assets/photograph/IMG_3804.jpg"  alt="Photography by Lavey Lai" /></div></div>
+      <div class="zp-layer"><div class="zp-inner"><img src="brand_assets/photograph/IMG_4438.jpg"  alt="Photography by Lavey Lai" /></div></div>
+      <div class="zp-layer"><div class="zp-inner"><img src="brand_assets/photograph/IMG_4208.JPG"  alt="Photography by Lavey Lai" /></div></div>
+      <div class="zp-layer"><div class="zp-inner"><img src="brand_assets/photograph/IMG_3681.jpg"  alt="Photography by Lavey Lai" /></div></div>
+      <div class="zp-layer"><div class="zp-inner"><img src="brand_assets/photograph/IMG_3220.jpg"  alt="Photography by Lavey Lai" /></div></div>
+      <div class="zp-layer"><div class="zp-inner"><img src="brand_assets/photograph/IMG_4630.jpg"  alt="Photography by Lavey Lai" /></div></div>
+      <span class="zp-hint">scroll</span>
+    </div>
+  </div>
+
+  <!-- PHOTO WALL -->
+  <main class="photo-wall" id="photoWall">
+
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3514.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3510.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3511.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4208.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4213.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3681.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3680.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3804.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3835.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3516.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3518.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3508.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3064.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3220.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3701.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3737.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3784.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3786.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3807%281%29.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4239.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4255.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4259.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4357.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4430.jpeg"  alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4438.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4439.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4449.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4630.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_4072.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_5213.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_5437.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_5441.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_6955.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_7115.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_7393.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_7546.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_7560.jpeg"  alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_7604.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_7608.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_8364.JPG"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_8383.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_2040.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_2042.jpg"   alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3704.jpeg"  alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/IMG_3741.jpeg"  alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/4623f20db1a83881ff62e9c833576b4b.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/8232d918c89f87735b5ebffbfc386ee3.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/89d1305ebdd8de2f67fa718dc7a57b0a.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/a119f8a01009ba7ade45b3598e03f741.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/a1a02cc803e9ace2ba2116e12c414e78.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/a59e8c6053a23ff0865d1e36a3165faa.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/56a47392fb7aa5a1afadab3dac1946bf.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/6b0741eab82066bd1156b76bbb14a125.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/6ec7437db669aa70f0f566717eb0ed44.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/296079b9e2282c8b3e61c9e7e51bffb1.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/39f261ffb3bf6b0a5d8d8cb4a1eff4a7.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/44829521-5907-44C4-A92A-D439718277B0.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/45a86859a812e0f575b70ddb7a4c923f.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/68D2A510-E367-4B10-9B9B-EDB9AF4DA987.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/72f7375b3afa0cc34b869762e90e24cb.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/75e5e3dd32eff14a00247770a8f4c301.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/82597b98a841eb97c3fd89fdde6cd243.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/8984084d84b946066031ba9e4c0c1954.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/91abb88544627345e2202e4ef93812cc.jpg" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/115526e973ea274d95f07448fbdf8951.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/11679c95ef0281f7a3a7a14f4a499372.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/601705aba3c35a461faa0b3be7f639a2.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/3A25EFDE-7DF1-497D-996A-663140ABC05B.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/3C85A156-C092-4D2E-AD74-50036B2C65D0.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/C75ADCF1-4C01-4EA4-BD4A-57FBAF1571F8.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/CA25FE0F-8566-42A4-9620-3E278C807EDD.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/da766dc42dd274234a9ce0fe9f7d76eb.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+    <div class="pw-item"><img src="brand_assets/photograph/EED4D35B-72C0-4DEB-8C24-B256A9C45CC1.JPG" alt="Photography by Lavey Lai" loading="lazy" /></div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="ph-footer">
+    <span class="ph-footer-logo">Lavey Lai</span>
+    <span class="ph-footer-copy">© 2025 Lavey Lai. All rights reserved.</span>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lb" role="dialog" aria-modal="true">
+    <button class="lb-btn lb-close" id="lb-close" aria-label="Close">×</button>
+    <button class="lb-btn lb-prev"  id="lb-prev"  aria-label="Previous">‹</button>
+    <button class="lb-btn lb-next"  id="lb-next"  aria-label="Next">›</button>
+    <img id="lb-img" src="" alt="" />
+    <span class="lb-counter" id="lb-counter"></span>
+  </div>
+
+  <script>
+    /* ── Zoom Parallax ── */
+    (function() {
+      const container = document.getElementById('zp-container');
+      const layers    = container.querySelectorAll('.zp-layer');
+      const scaleEnds = [4, 5, 6, 5, 6, 8, 9];
+
+      function update() {
+        const rect        = container.getBoundingClientRect();
+        const totalScroll = container.offsetHeight - window.innerHeight;
+        const progress    = Math.max(0, Math.min(1, -rect.top / totalScroll));
+
+        layers.forEach((layer, i) => {
+          const end   = scaleEnds[i % scaleEnds.length];
+          const scale = 1 + (end - 1) * progress;
+          layer.style.transform = `scale(${scale})`;
+        });
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+
+    /* Stagger animation delays */
+    document.querySelectorAll('.pw-item').forEach((el, i) => {
+      el.style.animationDelay = `${i * 28}ms`;
+    });
+
+    /* Lightbox */
+    const items   = Array.from(document.querySelectorAll('.pw-item'));
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lb-img');
+    const lbCount = document.getElementById('lb-counter');
+    const srcs    = items.map(el => el.querySelector('img').src);
+    let cur = 0;
+
+    function open(i) {
+      cur = i;
+      lbImg.src = srcs[cur];
+      lbCount.textContent = `${cur + 1} / ${srcs.length}`;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function move(d) {
+      cur = (cur + d + srcs.length) % srcs.length;
+      lbImg.src = srcs[cur];
+      lbCount.textContent = `${cur + 1} / ${srcs.length}`;
+    }
+
+    items.forEach((el, i) => el.addEventListener('click', () => open(i)));
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', () => move(-1));
+    document.getElementById('lb-next').addEventListener('click', () => move(1));
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape')     close();
+      if (e.key === 'ArrowLeft')  move(-1);
+      if (e.key === 'ArrowRight') move(1);
+    });
+
+    let tx = 0;
+    lb.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend',   e => {
+      const d = e.changedTouches[0].clientX - tx;
+      if (Math.abs(d) > 50) move(d < 0 ? 1 : -1);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

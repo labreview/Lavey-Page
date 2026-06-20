@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goodreads Redesign — Lavey Lai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="goodreads.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="proj-nav" id="projNav">
+    <div class="proj-nav-inner">
+      <a href="index.html" class="proj-nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        All Projects
+      </a>
+      <a href="index.html" class="proj-nav-logo">LL</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="proj-hero">
+    <div class="proj-hero-inner">
+      <div class="proj-hero-left">
+        <span class="proj-tag">UX Research &amp; Interaction Design &nbsp;·&nbsp; Jul – Aug 2025</span>
+        <h1 class="proj-title">Goodreads Redesign</h1>
+        <p class="proj-subtitle">A usability-focused redesign of Goodreads aimed at improving how users discover features, complete reading-related tasks, and navigate community content — translating research insights into streamlined interaction flows.</p>
+        <div class="proj-hero-btns">
+          <a href="#research" class="btn btn-white">View Research ↓</a>
+          <a href="#results" class="btn btn-ghost">View Results ↓</a>
+        </div>
+      </div>
+      <div class="proj-hero-right">
+        <div class="meta-group">
+          <span class="meta-label">When</span>
+          <span class="meta-value">July 2025 – August 2025</span>
+        </div>
+        <div class="meta-group">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">UX Designer &amp; Researcher (Individual)</span>
+        </div>
+        <div class="meta-group">
+          <span class="meta-label">Focus</span>
+          <span class="meta-value">Information Architecture, Usability Testing, Interaction Design</span>
+        </div>
+        <div class="meta-group">
+          <span class="meta-label">Contribution</span>
+          <div class="meta-tags">
+            <span>UX Research</span><span>Usability Testing</span>
+            <span>Information Architecture</span><span>Interaction Design</span>
+            <span>Semi-Structured Interviews</span><span>Think-Aloud Protocol</span>
+            <span>Task-Based Evaluation</span><span>Wireframing</span><span>Prototyping</span>
+          </div>
+        </div>
+        <div class="meta-group">
+          <span class="meta-label">Tools &amp; Skills</span>
+          <div class="meta-tags">
+            <span>Figma</span><span>Semi-Structured Interviews</span>
+            <span>Think-Aloud Protocol</span><span>Task-Based Usability Testing</span>
+          </div>
+        </div>
+        <div class="meta-group">
+          <span class="meta-label">Status</span>
+          <span class="status-badge">Redesign Completed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero cover -->
+  <div class="proj-cover" style="max-height:520px; overflow:hidden;">
+    <img
+      src="brand_assets/Goodread%20redesign/goodread%20redesigned.png"
+      alt="Goodreads Redesign — MacBook mockup showing home dashboard"
+      style="width:100%; height:520px; object-fit:cover; object-position:top;"
+    />
+  </div>
+
+  <!-- ===== IMPACT STATS ===== -->
+  <section class="proj-stats">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Research Participants<br><span style="font-size:0.7rem;opacity:0.6;">Ages 19–26</span></span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Core Flows Tested<br><span style="font-size:0.7rem;opacity:0.6;">Review · Preview · Interview</span></span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">100<span class="stat-suffix">%</span></span>
+        <span class="stat-label">Task 1 Success Rate<br><span style="font-size:0.7rem;opacity:0.6;">Writing a Book Review</span></span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">83<span class="stat-suffix">%</span></span>
+        <span class="stat-label">Task 2 &amp; 3 Success Rate<br><span style="font-size:0.7rem;opacity:0.6;">Preview &amp; Interview Flows</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEM ===== -->
+  <section class="proj-section bg-white">
+    <div class="proj-container">
+      <span class="section-label">The Problem</span>
+      <h2>Feature-rich but friction-heavy</h2>
+      <p>Despite being a feature-rich platform, Goodreads suffers from poor discoverability and unclear interaction design. Through research, we identified four recurring failure patterns:</p>
+      <div class="friction-list">
+        <div class="friction-item">
+          <span class="friction-dot"></span>
+          <p>Users struggling to find core actions — reviewing, previewing, reading interviews</p>
+        </div>
+        <div class="friction-item">
+          <span class="friction-dot"></span>
+          <p>Confusion between navigation categories such as <em>Library</em> vs <em>To Read</em></p>
+        </div>
+        <div class="friction-item">
+          <span class="friction-dot"></span>
+          <p>Weak visual affordance for interactive elements — thumbnails mistaken as static</p>
+        </div>
+        <div class="friction-item">
+          <span class="friction-dot"></span>
+          <p>High reliance on trial-and-error navigation rather than confident discovery</p>
+        </div>
+      </div>
+      <blockquote class="proj-quote">
+        How might we reduce cognitive load and improve discoverability in key Goodreads reading flows?
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ===== RESEARCH ===== -->
+  <section id="research" class="proj-section bg-dark">
+    <div class="proj-container proj-container--wide">
+      <span class="section-label" style="color:rgba(255,255,255,0.4)">Research Approach</span>
+      <h2 style="color:white">Observing real users on real tasks</h2>
+      <p style="color:rgba(255,255,255,0.55); max-width:600px; margin-bottom:3rem;">Six participants (ages 19–26) familiar with Goodreads, Kindle, and Wattpad-style platforms completed three task-based usability sessions while verbalizing their experience through think-aloud protocol.</p>
+      <div class="method-grid">
+        <div class="method-card">
+          <span class="method-icon">🎙️</span>
+          <h3>Semi-Structured Interviews</h3>
+          <p>6 participants explored reading habits, platform expectations, and navigation strategies.</p>
+        </div>
+        <div class="method-card">
+          <span class="method-icon">💬</span>
+          <h3>Think-Aloud Protocol</h3>
+          <p>Participants verbalized thoughts in real time, surfacing confusion and hesitation points.</p>
+        </div>
+        <div class="method-card">
+          <span class="method-icon">✅</span>
+          <h3>Task-Based Evaluation</h3>
+          <p>Three representative flows evaluated: writing a review, previewing a book, reading an author interview.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSIGHTS ===== -->
+  <section class="proj-section bg-alt">
+    <div class="proj-container proj-container--wide">
+      <span class="section-label">Key Insights</span>
+      <h2>Four patterns across every session</h2>
+      <div class="insights-numbered">
+        <div class="insight-numbered-card">
+          <span class="insight-n">1</span>
+          <div>
+            <h3>Discoverability breakdown is the main failure point</h3>
+            <p>Users rarely failed tasks due to inability — but due to not finding features quickly. Review actions were not immediately visible, the preview feature was hidden in deeper layers, and community interviews were poorly surfaced.</p>
+          </div>
+        </div>
+        <div class="insight-numbered-card">
+          <span class="insight-n">2</span>
+          <div>
+            <h3>Users rely on external mental models</h3>
+            <p>Participants expected patterns from Kindle, social media, and streaming apps. They expected direct "Read/Preview" actions on cards, clearer "Read more" affordances, and misinterpreted navigation labels like "Community."</p>
+          </div>
+        </div>
+        <div class="insight-numbered-card">
+          <span class="insight-n">3</span>
+          <div>
+            <h3>Weak affordance reduces interaction confidence</h3>
+            <p>Users hesitated when elements didn't clearly signal clickability. Thumbnails were mistaken as static images, buttons were visually under-emphasized, and hover/interaction cues were absent.</p>
+          </div>
+        </div>
+        <div class="insight-numbered-card">
+          <span class="insight-n">4</span>
+          <div>
+            <h3>Navigation depth increases friction</h3>
+            <p>More steps consistently led to backtracking, mis-clicking tabs, and abandoned exploration paths — confirming that depth was directly correlated with failure rate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DESIGN OPPORTUNITIES ===== -->
+  <section class="proj-section bg-white">
+    <div class="proj-container proj-container--wide">
+      <span class="section-label">Design Opportunities</span>
+      <h2>Four areas for intervention</h2>
+      <p style="color:var(--text-sub); max-width:560px; margin-bottom:3rem;">Research led directly to four core design decisions, each mapped to a specific failure pattern observed across participants.</p>
+      <div class="opp-grid">
+        <div class="opp-card">
+          <span class="opp-num">01</span>
+          <h3>Stronger Action Visibility</h3>
+          <p>Make "Review," "Preview," and "Read" actions immediately accessible on primary surfaces.</p>
+        </div>
+        <div class="opp-card">
+          <span class="opp-num">02</span>
+          <h3>Alignment with Familiar Mental Models</h3>
+          <p>Match expectations from Kindle-style reading interfaces and feed-based social platforms.</p>
+        </div>
+        <div class="opp-card">
+          <span class="opp-num">03</span>
+          <h3>Improved Affordance Hierarchy</h3>
+          <p>Stronger visual cues for clickable elements — buttons, cards, and thumbnails must signal interactivity clearly.</p>
+        </div>
+        <div class="opp-card">
+          <span class="opp-num">04</span>
+          <h3>Reduced Navigation Depth</h3>
+          <p>Minimize the number of steps between discovery and action completion across all three flows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DESIGN CHANGES ===== -->
+  <section class="proj-section bg-dark">
+    <div class="proj-container">
+      <span class="section-label" style="color:rgba(255,255,255,0.4)">Key Design Changes</span>
+      <h2 style="color:white">Small structural changes. Large usability gains.</h2>
+      <div class="change-list">
+        <div class="change-item">
+          <span class="change-label">Review Flow</span>
+          <p>Added clearer entry points and submission clarity directly on book pages — eliminating the need to navigate away to initiate a review.</p>
+        </div>
+        <div class="change-item">
+          <span class="change-label">Preview Flow</span>
+          <p>Moved preview access directly onto "To Read" shelf cards so users can preview without leaving their reading list.</p>
+        </div>
+        <div class="change-item">
+          <span class="change-label">Community Section</span>
+          <p>Reframed author interviews with explicit clickable affordances and surface-level placement — removing the need for deep navigation.</p>
+        </div>
+        <div class="change-item">
+          <span class="change-label">UI Hierarchy</span>
+          <p>Improved contrast and interaction signaling across all components — making active elements visually distinct from static content.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN SHOWCASE ===== -->
+  <section class="proj-section bg-white">
+    <div class="proj-container">
+      <span class="section-label">Final Screens</span>
+      <h2>Four redesigned flows</h2>
+      <p style="color:var(--text-sub);">Each screen reflects a direct research intervention — surfacing hidden actions, clarifying labels, and reducing the number of steps to complete key tasks.</p>
+    </div>
+    <div class="screen-grid" style="margin-top:2.5rem;">
+      <div class="screen-item">
+        <img src="brand_assets/Goodread%20redesign/Home%20Dash.png" alt="Goodreads Redesign — home dashboard" loading="lazy" />
+        <span>Home Dashboard</span>
+      </div>
+      <div class="screen-item">
+        <img src="brand_assets/Goodread%20redesign/BOOK%20DETAIL.png" alt="Goodreads Redesign — book detail page" loading="lazy" />
+        <span>Book Detail</span>
+      </div>
+      <div class="screen-item">
+        <img src="brand_assets/Goodread%20redesign/book%20review.png" alt="Goodreads Redesign — news and interviews" loading="lazy" />
+        <span>News &amp; Interviews</span>
+      </div>
+      <div class="screen-item">
+        <img src="brand_assets/Goodread%20redesign/READ.png" alt="Goodreads Redesign — your book shelf" loading="lazy" />
+        <span>Your Book Shelf</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LAYOUT OVERVIEW ===== -->
+  <section class="proj-section bg-alt">
+    <div class="proj-container">
+      <span class="section-label">Design Overview</span>
+      <h2>Three screens. One cohesive system.</h2>
+      <p style="color:var(--text-sub);">The redesign spans the full reading journey — from discovery on the home feed to managing your bookshelf and engaging with community content.</p>
+    </div>
+    <div class="proj-img-wide" style="margin-top:2.5rem;">
+      <img
+        src="brand_assets/Goodread%20redesign/layout%20goodread.png"
+        alt="Goodreads Redesign — three-panel layout overview"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- ===== PROTOTYPE OVERVIEW ===== -->
+  <section class="proj-section bg-dark">
+    <div class="proj-container">
+      <span class="section-label" style="color:rgba(255,255,255,0.4)">Prototype Overview</span>
+      <h2 style="color:white">All screens. One view.</h2>
+      <p style="color:rgba(255,255,255,0.55);">The complete prototype layout — every redesigned screen mapped together to verify visual consistency, hierarchy, and design system coherence.</p>
+    </div>
+    <div class="proj-img-wide" style="margin-top:2.5rem;">
+      <img
+        src="brand_assets/Goodread%20redesign/prototype.png"
+        alt="Goodreads Redesign — full prototype overview on dark background"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- ===== RESULTS ===== -->
+  <section id="results" class="proj-section bg-alt">
+    <div class="proj-container proj-container--wide">
+      <span class="section-label">Results</span>
+      <h2>Post-redesign testing confirmed the improvements</h2>
+      <p style="color:var(--text-sub); max-width:560px; margin-bottom:3rem;">Usability testing after the redesign showed faster task completion, reduced hesitation during navigation, fewer mis-clicks, and higher confidence in identifying interactive elements.</p>
+      <div class="results-grid">
+        <div class="result-card result-success">
+          <span class="result-pct">100<span>%</span></span>
+          <h3>Task 1 — Write a Review</h3>
+          <p>All participants successfully located and completed the review flow.</p>
+        </div>
+        <div class="result-card result-high">
+          <span class="result-pct">83<span>%</span></span>
+          <h3>Task 2 — Preview a Book</h3>
+          <p>Strong improvement in preview discoverability from the "To Read" shelf.</p>
+        </div>
+        <div class="result-card result-high">
+          <span class="result-pct">83<span>%</span></span>
+          <h3>Task 3 — Read an Interview</h3>
+          <p>Author interviews surfaced earlier and were identified as clickable by most participants.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KEY OUTCOME ===== -->
+  <section class="proj-section bg-white">
+    <div class="proj-container">
+      <span class="section-label">Key Outcome</span>
+      <h2>The real issue wasn't missing features</h2>
+      <p>The redesign demonstrates that usability issues in mature platforms are often not caused by missing functionality — but by poor discoverability and weak interaction signaling. Small structural changes significantly improved navigation clarity, task efficiency, and user confidence.</p>
+      <blockquote class="proj-quote">
+        Users don't fail because the feature doesn't exist. They fail because they can't find it.
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ===== LIMITATIONS ===== -->
+  <section class="proj-section bg-alt">
+    <div class="proj-container">
+      <span class="section-label">Limitations</span>
+      <h2>What this study couldn't capture</h2>
+      <div class="limit-grid">
+        <div class="limit-item">
+          <h3>Small sample size</h3>
+          <p>n=6 limits statistical generalizability — findings are directional, not definitive.</p>
+        </div>
+        <div class="limit-item">
+          <h3>Student-only demographic</h3>
+          <p>Results may not reflect the broader Goodreads user base, including older readers and casual users.</p>
+        </div>
+        <div class="limit-item">
+          <h3>Prototype-based testing</h3>
+          <p>Participants interacted with a Figma prototype — real system behaviors like load time and error states were absent.</p>
+        </div>
+        <div class="limit-item">
+          <h3>Structured task constraints</h3>
+          <p>Predefined tasks may not capture how users naturally explore the platform in unguided sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING ===== -->
+  <section class="proj-closing">
+    <div class="proj-container">
+      <span class="section-label" style="color:rgba(255,255,255,0.4)">Reflection</span>
+      <h2>Good UX isn't about adding more — it's about surfacing what's already there.</h2>
+      <p>The Goodreads redesign reinforced that the gap between a functional product and a usable one often comes down to clarity, hierarchy, and the invisible work of making interactions feel obvious. Research-driven design doesn't just improve metrics — it respects the user's time and attention.</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Lavey Lai</span>
+        <p class="footer-copy">© 2025 Lavey Lai. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/lavey-lai-769443206/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/lavey_lai/" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:lavey.weiyulai@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="project.js"></script>
+</body>
+</html>
