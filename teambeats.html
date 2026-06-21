@@ -147,6 +147,19 @@
 
     /* Nav adjustments */
     .proj-nav { position: fixed; z-index: 1000; }
+
+    @media (max-width: 640px) {
+      .flow-inner {
+        padding: clamp(4rem, 8vw, 5rem) 5vw 6vw;
+        gap: 1.25rem;
+      }
+      .flow-cols { flex-direction: column; gap: 1.25rem; }
+      .flow-col { min-width: unset; }
+      .sap-grid { grid-template-columns: repeat(2, 1fr); }
+      .sap-w2, .sap-w3 { grid-column: span 2; }
+      .flow-img-strip.cols-3,
+      .flow-img-strip.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
