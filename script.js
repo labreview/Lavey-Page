@@ -98,6 +98,25 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+  /* ----- Video autoplay on scroll ----- */
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        const vid = entry.target;
+        if (entry.isIntersecting) {
+          vid.play().catch(() => {});
+        } else {
+          vid.pause();
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+  document.querySelectorAll('video[autoplay]').forEach(vid => {
+    vid.removeAttribute('autoplay');
+    videoObserver.observe(vid);
+  });
+
   /* ----- Photography Lightbox ----- */
   const photoItems   = document.querySelectorAll('.photo-item');
   const lightbox     = document.getElementById('lightbox');
